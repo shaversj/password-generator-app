@@ -15,7 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={jetbrainsMono.variable}>{children}</body>
+      <body className={jetbrainsMono.variable}>
+        <main className={"font-jetbrains bg-very-dark-grey grid min-h-screen place-items-center"}>{children}</main>
+      </body>
     </html>
   );
 }
