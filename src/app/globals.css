@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#range-slider .range-slider__thumb[data-lower] {
+    width: 0;
+}

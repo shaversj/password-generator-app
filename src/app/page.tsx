@@ -4,9 +4,11 @@ import CheckedSVG from "@/components/CheckedSVG";
 import IconArrowRightSVG from "@/components/IconArrowRightSVG";
 import IconCopySVG from "@/components/IconCopySVG";
 import { useState } from "react";
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
 
 export default function Home() {
-  const [passwordLength, setPasswordLength] = useState(10);
+  const [passwordLength, setPasswordLength] = useState(0);
 
   const passwordCriteria = [
     {
@@ -52,7 +54,19 @@ export default function Home() {
           <label className={"text-almost-white flex items-center text-[18px] leading-[23px]"} htmlFor={"length"}>
             Character Length <span className={"text-neon-green ml-auto text-[32px] leading-[43px]"}>{passwordLength}</span>
           </label>
-          <input onChange={(e) => onChangeHandler(e)} className={"mt-4"} type={"range"} name={"length"} min={0} max={20} step={1} />
+          {/*<input onChange={(e) => onChangeHandler(e)} className={"mt-4"} type={"range"} name={"length"} min={0} max={20} step={1} />*/}
+          <RangeSlider
+            id={"range-slider"}
+            value={passwordLength}
+            thumbsDisabled={[false, false]}
+            defaultValue={[0, 0]}
+            min={0}
+            max={20}
+            step={1}
+            className={"mt-4"}
+            onInput={setPasswordLength}
+            rangeSlideDisabled={true}
+          />
         </div>
 
         <div className={"space-y-5 pt-8"}>
