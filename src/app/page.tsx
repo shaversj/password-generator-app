@@ -8,7 +8,7 @@ import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 
 export default function Home() {
-  const [passwordLength, setPasswordLength] = useState([0, 10]);
+  const [passwordLength, setPasswordLength] = useState([0, 0]);
   const [password, setPassword] = useState("");
 
   const passwordCriteria = [
@@ -61,16 +61,16 @@ export default function Home() {
   }
 
   return (
-    <main className="w-[540px]">
-      <h1 className={"text-grey text-center text-[24px] leading-[43px]"}>Password Generator</h1>
-      <div className={"bg-dark-grey text-almost-white mt-[31px] flex h-[80px] items-center px-8 py-[19px] text-[32px]"}>
-        {password} <IconCopySVG className={"ml-auto"} />{" "}
+    <main className="w-[343px] md:w-[540px]">
+      <h1 className={"text-grey text-center text-[1rem] leading-[2.688rem] md:text-[1.5rem]"}>Password Generator</h1>
+      <div className={"bg-dark-grey text-almost-white mt-[1.25rem] flex h-[5rem] items-center px-4 py-[1.188rem] text-[2rem] md:px-8"}>
+        {password ? password : <span className={"text-[#55545c]"}>P4$5W0rD!</span>} <IconCopySVG className={"ml-auto"} />{" "}
       </div>
 
-      <form className={"bg-dark-grey mt-6 p-8"} onSubmit={(e) => handleSubmit(e)}>
-        <div className={"flex flex-col"}>
-          <label className={"text-almost-white flex items-center text-[18px] leading-[23px]"} htmlFor={"range-slider"}>
-            Character Length <span className={"text-neon-green ml-auto text-[32px] leading-[43px]"}>{passwordLength[1]}</span>
+      <form className={"bg-dark-grey mt-6 p-4 md:p-8"} onSubmit={(e) => handleSubmit(e)}>
+        <div className={"flex flex-col gap-y-2 md:gap-y-4"}>
+          <label className={"text-almost-white flex items-center text-[.97rem] font-semibold leading-[1.438rem] md:text-[1.125rem]"} htmlFor={"range-slider"}>
+            Character Length <span className={"text-neon-green ml-auto text-[2rem] leading-[2.688rem]"}>{passwordLength[1]}</span>
           </label>
           {/*<input onChange={(e) => onChangeHandler(e)} className={"mt-4"} type={"range"} name={"length"} min={0} max={20} step={1} />*/}
           <RangeSlider
@@ -87,7 +87,7 @@ export default function Home() {
           />
         </div>
 
-        <div className={"space-y-5 pt-8"}>
+        <div className={"space-y-4 pt-9 md:space-y-5"}>
           {passwordCriteria.map((criteria) => (
             <div key={criteria.name} className={"flex items-center"}>
               <input
@@ -97,7 +97,7 @@ export default function Home() {
                 value={criteria.name}
               />
               <CheckedSVG className={"pointer-events-none absolute hidden h-[1.25rem] w-[1.25rem] peer-checked:block"} />
-              <label className={"text-almost-white pl-6 text-[18px] font-semibold leading-[23px]"} htmlFor={criteria.name}>
+              <label className={"text-almost-white pl-6 text-[.97rem] font-semibold leading-[1.438rem] md:text-[1.125rem]"} htmlFor={criteria.name}>
                 {criteria.displayName}
               </label>
             </div>
@@ -106,7 +106,7 @@ export default function Home() {
 
         <button
           type={"submit"}
-          className={"text-dark-grey bg-neon-green mt-8 flex h-[65px] w-full items-center justify-center gap-x-6 text-[18px] font-semibold leading-[23px]"}
+          className={"text-dark-grey bg-neon-green mt-8 flex h-[4.063rem] w-full items-center justify-center gap-x-6 text-[1.125rem] font-semibold leading-[1.438rem]"}
         >
           GENERATE <IconArrowRightSVG className={""} />
         </button>
