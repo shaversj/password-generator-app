@@ -49,6 +49,7 @@ export default function Home() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
+    new Response(formData).text().then(console.log);
     const selectedCriteria = passwordCriteria.filter((criteria) => formData.get(criteria.name));
     let criteria = selectedCriteria.map((data) => passwordOptions[data.name as keyof typeof passwordOptions]).join("");
     if (criteria === "") {
