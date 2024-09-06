@@ -104,6 +104,19 @@ export default function Home() {
           ))}
         </div>
 
+        <div className={"bg-very-dark-grey my-8 flex items-center px-8 py-5"}>
+          <span className={"text-grey text-[.97rem] font-semibold uppercase leading-[1.438rem] md:text-[1.125rem]"}>Strength</span>
+          <div className={"ml-auto flex gap-x-[15.5px]"}>
+            <span className={"text-almost-white text-[24px] font-semibold uppercase leading-[31px]"}>Too Weak!</span>
+            <div className={"flex gap-x-[8.5px]"}>
+              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
+              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
+              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
+              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
+            </div>
+          </div>
+        </div>
+
         <button
           type={"submit"}
           className={"text-dark-grey bg-neon-green mt-8 flex h-[4.063rem] w-full items-center justify-center gap-x-6 text-[1.125rem] font-semibold leading-[1.438rem]"}
