@@ -84,7 +84,6 @@ export default function Home() {
           <label className={"text-almost-white flex items-center text-[.97rem] font-semibold leading-[1.438rem] md:text-[1.125rem]"} htmlFor={"range-slider"}>
             Character Length <span className={"text-neon-green ml-auto text-[2rem] leading-[2.688rem]"}>{passwordLength[1]}</span>
           </label>
-          {/*<input onChange={(e) => onChangeHandler(e)} className={"mt-4"} type={"range"} name={"length"} min={0} max={20} step={1} />*/}
           <RangeSlider
             id={"range-slider"}
             value={passwordLength}
@@ -118,16 +117,6 @@ export default function Home() {
 
         <div className={"bg-very-dark-grey my-8 flex items-center px-8 py-5"}>
           <span className={"text-grey text-[.97rem] font-semibold uppercase leading-[1.438rem] md:text-[1.125rem]"}>Strength</span>
-          {/*<div className={"ml-auto flex gap-x-[15.5px]"}>*/}
-          {/*  <span className={"text-almost-white text-[24px] font-semibold uppercase leading-[31px]"}>Too Weak!</span>*/}
-          {/*  <div className={"flex gap-x-[8.5px]"}>*/}
-          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
-          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
-          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
-          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
-          {/*  </div>*/}
-          {/*</div>*/}
-
           <StrengthComponent strengthState={passwordStrength} />
         </div>
 
