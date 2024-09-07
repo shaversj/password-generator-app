@@ -6,10 +6,13 @@ import IconCopySVG from "@/components/IconCopySVG";
 import { useState } from "react";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import StrengthComponent from "@/components/StrengthComponent";
+import type { strengthState } from "@/components/StrengthComponent";
 
 export default function Home() {
   const [passwordLength, setPasswordLength] = useState([0, 0]);
   const [password, setPassword] = useState("");
+  const [passwordStrength, setPasswordStrength] = useState<strengthState>("");
 
   const passwordCriteria = [
     {
@@ -52,13 +55,22 @@ export default function Home() {
     new Response(formData).text().then(console.log);
     const selectedCriteria = passwordCriteria.filter((criteria) => formData.get(criteria.name));
     let criteria = selectedCriteria.map((data) => passwordOptions[data.name as keyof typeof passwordOptions]).join("");
-    if (criteria === "") {
-      alert("Please select at least one criteria");
-      return;
-    }
 
     setPassword(generatePassword(criteria, passwordLength[1]));
+    setPasswordStrength(determineStrengthState(passwordLength[1], criteria.length));
   }
+
+  const determineStrengthState = (passwordLength: number, criteriaLength: number): strengthState => {
+    const strengthLevels = [
+      { condition: passwordLength < 8 && criteriaLength < 1, strength: "Too Weak!" },
+      { condition: passwordLength < 8 && criteriaLength < 2, strength: "Weak" },
+      { condition: passwordLength < 12 && criteriaLength < 3, strength: "Medium" },
+      { condition: passwordLength >= 12 && criteriaLength >= 3, strength: "Strong" },
+    ];
+
+    const { strength } = strengthLevels.find(({ condition }) => condition) || { strength: "" };
+    return strength as strengthState;
+  };
 
   return (
     <main className="w-[343px] md:w-[540px]">
@@ -106,15 +118,17 @@ export default function Home() {
 
         <div className={"bg-very-dark-grey my-8 flex items-center px-8 py-5"}>
           <span className={"text-grey text-[.97rem] font-semibold uppercase leading-[1.438rem] md:text-[1.125rem]"}>Strength</span>
-          <div className={"ml-auto flex gap-x-[15.5px]"}>
-            <span className={"text-almost-white text-[24px] font-semibold uppercase leading-[31px]"}>Too Weak!</span>
-            <div className={"flex gap-x-[8.5px]"}>
-              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
-              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
-              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
-              <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>
-            </div>
-          </div>
+          {/*<div className={"ml-auto flex gap-x-[15.5px]"}>*/}
+          {/*  <span className={"text-almost-white text-[24px] font-semibold uppercase leading-[31px]"}>Too Weak!</span>*/}
+          {/*  <div className={"flex gap-x-[8.5px]"}>*/}
+          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
+          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
+          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
+          {/*    <div className={"border-almost-white h-[28px] w-[10px] border-2"}></div>*/}
+          {/*  </div>*/}
+          {/*</div>*/}
+
+          <StrengthComponent strengthState={passwordStrength} />
         </div>
 
         <button
