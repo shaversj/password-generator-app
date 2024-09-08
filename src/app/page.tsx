@@ -18,6 +18,7 @@ export default function Home() {
   const [passwordLength, setPasswordLength] = useState<[number, number]>([0, 0]);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState<PasswordStrength>("");
+  const [displayCopyToast, setDisplayCopyToast] = useState(false);
 
   function generatePassword(criteria: string, length: number) {
     let randomize = require("randomatic");
@@ -28,12 +29,13 @@ export default function Home() {
     if (textToCopy === "") alert("No password to copy");
 
     navigator.clipboard.writeText(textToCopy).then(() => {
-      alert("Password copied to clipboard");
+      setDisplayCopyToast(true);
     });
   }
 
   function handleFormSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setDisplayCopyToast(false);
     const formData = new FormData(e.currentTarget);
     const criteria = passwordCriteria
       .filter((c) => formData.get(c.name))
@@ -64,7 +66,7 @@ export default function Home() {
   return (
     <main className="w-[21.438rem] md:w-[33.75rem]">
       <Header>Password Generator</Header>
-      <PasswordDisplay password={password} onClickHandler={() => handleCopyToClipboard({ textToCopy: password })} />
+      <PasswordDisplay password={password} displayCopyToast={displayCopyToast} onClickHandler={() => handleCopyToClipboard({ textToCopy: password })} />
       <form className={"bg-dark-grey mt-6 p-4 md:p-8"} onSubmit={(e) => handleFormSubmit(e)}>
         <PasswordLengthSlider passwordLength={passwordLength} setPasswordLength={setPasswordLength} />
         <PasswordCriteriaList />
@@ -72,7 +74,7 @@ export default function Home() {
           <StrengthIndicator passwordStrength={passwordStrength} />
         </StrengthContainer>
         <Button variant={"primary"}>
-          GENERATE <IconArrowRightSVG />
+          GENERATE <IconArrowRightSVG className={"fill-dark-grey group-hover:fill-neon-green"} />
         </Button>
       </form>
     </main>

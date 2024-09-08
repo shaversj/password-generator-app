@@ -7,7 +7,7 @@ export default function PasswordCriteriaList() {
       {passwordCriteria.map((criteria) => (
         <div key={criteria.name} className={"flex items-center"}>
           <input
-            className={"border-almost-white checked:bg-neon-green peer h-[1.25rem] w-[1.25rem] appearance-none border-2"}
+            className={"border-almost-white checked:bg-neon-green hover:border-neon-green peer h-[1.25rem] w-[1.25rem] appearance-none border-2"}
             type={"checkbox"}
             name={criteria.name}
             value={criteria.name}

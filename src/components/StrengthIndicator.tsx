@@ -10,8 +10,8 @@ const VARIANTS: Record<PasswordStrength, string> = {
 
 export default function StrengthIndicator({ passwordStrength }: { passwordStrength: PasswordStrength }) {
   return (
-    <div className="ml-auto flex h-full items-center gap-x-4">
-      <span className="text-almost-white text-2xl font-semibold uppercase leading-8">{passwordStrength}</span>
+    <div className="flex h-full w-full items-center justify-end gap-x-4">
+      <span className="text-almost-white text-[1.188rem] font-semibold uppercase leading-8 md:text-2xl">{passwordStrength}</span>
       <div className="flex gap-x-2">
         {[...Array(4)].map((_, index) => (
           <div key={index} className={VARIANTS[passwordStrength]}></div>
