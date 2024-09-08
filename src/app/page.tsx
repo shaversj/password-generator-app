@@ -62,7 +62,7 @@ export default function Home() {
   };
 
   return (
-    <main className="w-[343px] md:w-[540px]">
+    <main className="w-[21.438rem] md:w-[33.75rem]">
       <Header>Password Generator</Header>
       <PasswordDisplay password={password} onClickHandler={() => handleCopyToClipboard({ textToCopy: password })} />
       <form className={"bg-dark-grey mt-6 p-4 md:p-8"} onSubmit={(e) => handleFormSubmit(e)}>
