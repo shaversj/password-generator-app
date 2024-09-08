@@ -76,7 +76,10 @@ export default function Home() {
     <main className="w-[343px] md:w-[540px]">
       <h1 className={"text-grey text-center text-[1rem] leading-[2.688rem] md:text-[1.5rem]"}>Password Generator</h1>
       <div className={"bg-dark-grey text-almost-white mt-[1.25rem] flex h-[5rem] items-center px-4 py-[1.188rem] text-[2rem] md:px-8"}>
-        {password ? password : <span className={"text-[#55545c]"}>P4$5W0rD!</span>} <IconCopySVG className={"ml-auto"} />{" "}
+        {password ? password : <span className={"text-[#55545c]"}>P4$5W0rD!</span>}{" "}
+        <button className={"ml-auto"} onClick={() => navigator.clipboard.writeText(password)}>
+          <IconCopySVG />
+        </button>
       </div>
 
       <form className={"bg-dark-grey mt-6 p-4 md:p-8"} onSubmit={(e) => handleSubmit(e)}>
