@@ -6,7 +6,6 @@ import StrengthIndicator from "@/components/StrengthIndicator";
 import { passwordCriteria, passwordOptions } from "@/constants/constants";
 import { useState } from "react";
 
-import "react-range-slider-input/dist/style.css";
 import PasswordCriteriaList from "@/components/PasswordCriteriaList";
 import StrengthContainer from "@/components/StrengthContainer";
 import PasswordLengthSlider from "@/components/PasswordLengthSlider";
@@ -15,7 +14,7 @@ import Header from "@/components/Header";
 import PasswordDisplay from "@/components/PasswordDisplay";
 
 export default function Home() {
-  const [passwordLength, setPasswordLength] = useState<[number, number]>([0, 0]);
+  const [passwordLength, setPasswordLength] = useState([0]);
   const [password, setPassword] = useState("");
   const [passwordStrength, setPasswordStrength] = useState<PasswordStrength>("");
   const [displayCopyToast, setDisplayCopyToast] = useState(false);
@@ -47,8 +46,8 @@ export default function Home() {
       return;
     }
 
-    setPassword(generatePassword(criteria, passwordLength[1]));
-    setPasswordStrength(determineStrengthState(passwordLength[1], criteria.length));
+    setPassword(generatePassword(criteria, passwordLength[0]));
+    setPasswordStrength(determineStrengthState(passwordLength[0], criteria.length));
   }
 
   const determineStrengthState = (passwordLength: number, criteriaLength: number): PasswordStrength => {
@@ -67,7 +66,7 @@ export default function Home() {
     <main className="w-[21.438rem] md:w-[33.75rem]">
       <Header>Password Generator</Header>
       <PasswordDisplay password={password} displayCopyToast={displayCopyToast} onClickHandler={() => handleCopyToClipboard({ textToCopy: password })} />
-      <form className={"bg-dark-grey mt-6 p-4 md:p-8"} onSubmit={(e) => handleFormSubmit(e)}>
+      <form className={"bg-dark-grey mt-6 p-4 md:px-8 md:pb-8 md:pt-6"} onSubmit={(e) => handleFormSubmit(e)}>
         <PasswordLengthSlider passwordLength={passwordLength} setPasswordLength={setPasswordLength} />
         <PasswordCriteriaList />
         <StrengthContainer>

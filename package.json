@@ -9,11 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slider": "^1.2.0",
     "next": "14.2.7",
     "randomatic": "^3.1.1",
     "react": "^18",
-    "react-dom": "^18",
-    "react-range-slider-input": "^3.0.7"
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@types/node": "^20",

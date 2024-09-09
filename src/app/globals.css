@@ -1,34 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Controls background color when slider is at 0 */
-#range-slider {
-    height: .5rem;
-    background-color: hsl(248, 15%, 11%);
-}
-
-/* Controls color of left side of slider */
-#range-slider .range-slider__range {
-    border-radius: 6px;
-    background-color: hsl(127, 100%, 82%)
-}
-
-/* Removes 1 of 2 thumbs. Default is 2 thumbs. */
-#range-slider .range-slider__thumb[data-lower] {
-    width: 0;
-}
-
-/* CSS for thumb */
-#range-slider .range-slider__thumb {
-    background-color: hsl(252, 11%, 91%);
-    height: 28px;
-    width: 28px;
-}
-
-/* CSS for thumb when hovered or active */
-#range-slider .range-slider__thumb[data-active],
-#range-slider .range-slider__thumb:hover {
-    background-color: hsl(248, 15%, 11%);
-    border: 2px solid hsl(127, 100%, 82%);
-}
