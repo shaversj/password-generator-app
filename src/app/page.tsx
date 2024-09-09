@@ -25,7 +25,7 @@ export default function Home() {
   }
 
   function handleCopyToClipboard({ textToCopy }: { textToCopy: string }) {
-    if (textToCopy === "") alert("No password to copy");
+    if (textToCopy === "") return alert("No password to copy");
 
     navigator.clipboard.writeText(textToCopy).then(() => {
       setDisplayCopyToast(true);
